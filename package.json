@@ -1,6 +1,6 @@
 {
   "name": "@alobato/use-hotkeys",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React hook hotkeys",
   "main": "index.js",
   "repository": "github:alobato/use-hotkeys",

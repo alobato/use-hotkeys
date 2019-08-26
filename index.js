@@ -1,10 +1,13 @@
-import { useEffect } from 'react'
-
+// https://github.com/JohannesKlauss/react-hotkeys-hook/blob/master/src/index.ts
+import { useEffect, useCallback } from 'react'
 import hotkeys from 'hotkeys-js'
 
-export default (keys, callback) => {
+export default (keys, callback, deps = []) => {
+  const memoisedCallback = useCallback(callback, deps)
+ 
   useEffect(() => {
-    hotkeys(keys, (event, handler) => callback(event, handler))
+    hotkeys(keys, memoisedCallback)
+
     return () => hotkeys.unbind(keys)
-  }, [keys, callback])
+  }, [memoisedCallback])
 }
